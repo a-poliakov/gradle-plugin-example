@@ -1,0 +1,41 @@
+plugins {
+//    id 'groovy'
+    id 'groovy-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '1.2.0'
+}
+
+gradlePlugin {
+    plugins {
+        codegenPlugin {
+            id = 'org.example.generator'
+            displayName = 'Gradle Generator Plugin'
+            description = 'Gradle plugin for code generation'
+            implementationClass = 'org.example.generator.CodeGeneratorPlugin'
+        }
+    }
+}
+
+group 'org.example'
+version 1.0
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.github.java-json-tools:json-schema-validator:2.2.14'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.2'
+
+    testImplementation platform('org.spockframework:spock-bom:2.1-groovy-3.0')
+    testImplementation 'org.spockframework:spock-core'
+
+    testRuntimeOnly 'cglib:cglib-nodep:3.3.0'
+}
+
+test {
+    useJUnitPlatform()
+}

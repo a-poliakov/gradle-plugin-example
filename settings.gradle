@@ -1,0 +1,10 @@
+pluginManagement  {
+    repositories {
+        mavenLocal()
+    }
+}
+
+rootProject.name = 'plugin-codegen'
+//include 'codegen-plugin'
+include 'plugin-example'
+
